@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for Amu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #880e4f;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        #countdown, #message {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        #message {
+            display: none;
+        }
+        .heart {
+            color: #d50000;
+            font-size: 5em;
+            margin-top: 20px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 I love You Amu 💖</h1>
+    <div id="countdown">Get ready in 3...</div>
+    <div id="message"></div>
+    <div class="heart">❤️</div>
+
+    <script>
+        let countdownElement = document.getElementById('countdown');
+        let messageElement = document.getElementById('message');
+        let messages = [
+            "Amu, you're the reason behind my biggest smiles! 😊",
+            "Every moment with you is a dream come true. 💖",
+            "You're my sunshine on a cloudy day, Amu. ☀️",
+            "Together, we make the perfect team, just like stars and the night sky. ✨",
+            "Amu, you light up my world more than the brightest stars! 🌟",
+            "No words can express how much you mean to me. 💕",
+            "I fall for you a little more every single day, Amu. ❤️"
+        ];
+
+        function showSurprise() {
+            let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            countdownElement.style.display = 'none';
+            messageElement.style.display = 'block';
+            messageElement.innerHTML = randomMessage;
+        }
+
+        function startCountdown() {
+            let countdown = 3;
+            let countdownTimer = setInterval(function() {
+                countdownElement.innerHTML = "Get ready in " + countdown + "...";
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(countdownTimer);
+                    showSurprise();
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+</html>
